@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        p#result {
+            margin: 0;
+            display: none;
+            border-style: double;
+            padding: 0.5em;
+            width: 20%;
+            text-align: center;
+            border-width: thick;
+        }
+    </style>
+    <script src="https://unpkg.com/dompurify@1.0.8/dist/purify.min.js"></script>
+</head>
+
+<body>
+    <h1>Simple Dialog</h1>
+
+    <button type="button" id="btn1">Alert</button>
+    <button type="button" id="btn2">Confirm</button>
+    <button type="button" id="btn3">Prompt</button>
+    <button type="button" id="btn4">Safer Prompt</button>
+    <hr>
+    <p id="result"></p>
+
+
+    
+
+
+    <script>
+        
+
+        // action for alert button
+        document.getElementById("btn1").addEventListener("click",
+            function () {
+                result.style.display = 'none';
+                setTimeout(function () {
+                    alert("Alert pressed!");
+                }, 10);
+            });
+
+        // action for confirm button
+        document.getElementById("btn2").addEventListener("click",
+            function () {
+                result.style.display = 'none';
+
+                setTimeout(function () {
+                    let text;
+
+                    text = "Confirm result:" + confirm("Do you confirm this?");
+                    document.getElementById("result").innerHTML = text;
+                    result.style.display = 'block';
+                }, 10);
+            });
+
+        // action for prompt button
+        document.getElementById("btn3").addEventListener("click",
+            function () {
+                result.style.display = 'none';
+
+                setTimeout(function () {
+                    let text; // text to be print
+                    let name = prompt("What is your name?"); // a val to hold user input
+
+
+                    if (name == null || name == "") {
+                        text = "Prompt result: User didn't enter anything";
+                    }
+
+                    else
+                        text = "Prompt result: " + name;
+
+                    document.getElementById("result").innerHTML = text;
+                    result.style.display = 'block';
+                }, 10);
+            });
+            
+        document.getElementById("btn4").addEventListener("click", () => {
+            result.style.display = 'none';
+            let default_str = '<b onmouseover="alert' + "('pwned')" + '">Roll me</b>';
+
+            setTimeout(() => {
+                let text; // text to be print
+                
+                let name = DOMPurify.sanitize(prompt("What is your name?",default_str)); // a val to hold user input
+
+                if (name == null || name == "") {
+                    text = "Prompt result: User didn't enter anything";
+                }
+
+                else
+                    text = "Prompt result: " + name;
+
+                document.getElementById("result").innerHTML = text;
+                result.style.display = 'block';
+            
+            }, 10);
+        });
+
+    </script>
+
+</body>
+
+</html>

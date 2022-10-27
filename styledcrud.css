@@ -1,0 +1,65 @@
+/* * {
+    margin: 0;
+    padding: 0;
+} */
+
+html {
+    background-color: antiquewhite;
+}
+
+fieldset.dialog {
+    display: flex;
+    flex-direction: column;
+}
+
+post{
+    background-color: #ddffff;
+    display: flex;
+    border-radius: 1em;
+    border-left:6px solid rgb(99, 180, 237);
+    padding: 2em; 
+    width: 70%;  
+    margin-bottom: 1rem;
+}
+
+post:hover {
+    background-color: #ddffff77;
+}
+
+post > h1{
+    margin: 1em;
+    float: left;
+    width: 5em;
+    font-size: 1em;
+    text-align:center;
+}
+post > h2{
+    width: 5em;
+    margin: 1em;
+    font-size: 1em;
+    text-align:justify;
+}
+
+
+post > p {
+    margin: 1em;
+    float: left;
+    text-align:justify;
+    width: 60%;
+}
+
+post button {
+    width: 2em;
+    margin: 1em;
+    font-size: larger;
+    background: transparent;
+    
+}
+post button:hover {
+    background-color: #adddddb7;
+}
+
+fieldset.dialog >textarea {
+    width: 20em;
+    height: 20em;
+}

@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Personal Portfolio Page" />
+    <meta name="keywords" content="HTML, CSS, JavaScript" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="images/favicon.svg">
+    <title>Personal Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MGM15BK2B7"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-MGM15BK2B7');
+    </script>
+</head>
+
+<body>
+    <!-- Navigation bar on the top -->
+    <nav class="nav">
+        <header id="nav_header" class="max_width">
+
+            <!-- dropdown menu -->
+            <input id="fold-menu" type="checkbox" />
+            <label class='menu-container' for="fold-menu">
+                <span class='menu-button'></span>
+            </label>
+
+            <ul class="menu">
+                <li><a href="#home">HOME </a> </li>
+                <li><a href="#about">About Me </a></li>
+                <li><a href="#projects">Projects </a></li>
+                <li><a href="#skills">Skills </a></li>
+                <li><a href="#contact">Contact </a></li>
+            </ul>
+        </header>
+    </nav>
+
+    <!-- Home Section-->
+    <section class="home" id="home">
+        <div class="max_width">
+            <header>
+                <h1>Hello, my name is Weijie Huang</h1>
+                <p>Welcome to my personal portfolio</p>
+            </header>
+        </div>
+    </section>
+
+    <!-- About Me Section -->
+    <section class="about" id="about">
+        <div class="max_width">
+            <h1>About Me</h1>
+            <header class="about_content">
+                <picture>
+                    <!-- picture for mobile device -->
+                    <source srcset="images/mobile/user-mobile.webp" media="(max-width: 600px)">
+                    <img src="images/user.webp" alt="Photo of myself">
+                </picture>
+
+                <p>My name is Weijie Huang, and
+                    I'm a student at the University of California San Diego.
+                    Currently, I'm a junior student majoring in Computer Sciecne who pursue a career
+                    to be a professional software developer in the future.</p>
+            </header>
+        </div>
+    </section>
+
+
+    <!-- Project Section -->
+    <section class="projects" id="projects">
+        <div class="max_width">
+            <h1>My projects</h1>
+            <header class="project_list">
+                <ol>
+                    <li>
+
+                        <a href="https://github.com/weh010/Zoo-Application"><b>San Diego Zoo Android
+                                Applicaion</b></a>
+
+
+                        <ul>
+                            <li>Display the animal information to the user</li>
+                            <li>provide nagivation information to help the user find the animal they like</li>
+                        </ul>
+
+                    </li>
+
+                    <li>
+
+
+
+                        <a href="https://github.com/weh010/COGS-108-Project1"><b>Analysis of the U.S. Automotive
+                                Market and Its Employment Status</b></a>
+
+
+
+                        <ul>
+                            <li>Team leader of 5 to analyze the auto-related employment statistics and vehicle sales
+                                history from BLS, with a total of 5000+ data observations.</li>
+                            <li>Utilized data visualization to determine the relationship and connection between the
+                                U.S. Automotive sales Market and the employment status of auto-related industries.
+                            </li>
+
+                        </ul>
+
+
+                    </li>
+
+                    <li>
+
+                        <b>
+                            Catch Bananas Game
+                        </b>
+
+                        <ul>
+                            <li>
+                                Using a block-based programming language snap to design a simple Game
+                            </li>
+
+                        </ul>
+
+
+
+                    </li>
+
+
+                </ol>
+
+            </header>
+
+        </div>
+
+    </section>
+
+    <!-- SKill section -->
+    <section class="skills" id="skills">
+        <div class="max_width">
+            <h1>My Skills</h1>
+            <header class="skill_content">
+                <div class="progress-bar">
+                    <p class="language Python">Python</p>
+                    <progress max="100" value="75">75%</progress>
+                </div>
+                <div class="progress-bar">
+                    <p class="language Java">Java</p>
+                    <progress max="100" value="85">85%</progress>
+                </div>
+                <div class="progress-bar">
+                    <p class="language Cpp">C++</p>
+                    <progress max="100" value="65">65%</progress>
+                </div>
+                <div class="progress-bar">
+                    <p class="language Git">Git</p>
+                    <progress max="100" value="80">80%</progress>
+                </div>
+                <div class="progress-bar">
+                    <p class="language Sql">SQL</p>
+                    <progress max="100" value="90">90%</progress>
+                </div>
+
+            </header>
+        </div>
+
+    </section>
+
+    <!-- Contact section -->
+    <section class="contact" id="contact">
+        <div class="max_width">
+            <h1>Contact Me</h1>
+            <header class="contact_content">
+                <a href="https://www.linkedin.com/in/weijie-huang-30a10921a/">
+                    <img class="contact_icon" src="/images/linkedin.svg" alt="linkedin">
+                </a>
+                <a href="https://github.com/weh010">
+                    <img class="contact_icon" src="/images/github.svg" alt="github">
+                </a>
+                <a href="mailto:weh010@ucsd.edu">
+                    <img class="contact_icon" src="/images/email.svg" alt="email">
+                </a>
+
+            </header>
+            <div>
+                <button type="button" id="message-me">Click here to message me</button>
+            </div>
+        </div>
+    </section>
+
+
+
+    <footer>
+        <p> Pages created by Weijie Huang</p>
+    </footer>
+
+    <dialog id="dialog">
+        <form class="gform" id="contact-form" method="POST"
+            action="https://script.google.com/macros/s/AKfycbx5HzV0elEFbqYNTtpej9J4rOGEx6xPoAzdNdTu0_tFnSmPeK6q8CLukERJ_ajzlzIdZQ/exec">
+            <fieldset class="dialog">
+                <legend>Message</legend>
+                <label for="name">Your name</label>
+                <input type="text" name="name" id="name">
+                <label for="date">Date</label>
+                <input type="date" name="date" id="date">
+                <label for="email">Your Email</label>
+                <input type="email" name="email" id="email">
+                <label for="message">Your message</label>
+                <textarea name="message" id="message"></textarea>
+
+                <div>
+                    <button type="button" id="cancel-btn" value="cancel">Cancel</button>
+                    <input type="submit" value="submit">
+                </div>
+
+            </fieldset>
+
+        </form>
+    </dialog>
+
+    <dialog id="dialog-2">
+        <form method="dialog">
+            <p>Message sent!</p>
+            <button value="default">ok</button>
+        </form>
+    </dialog>
+
+
+    <script>
+        const dialog = document.getElementById("dialog"); //dialog to send message
+        const dialog2 = document.getElementById("dialog-2") // dialog to inform user the message is sent
+        const messageBtn = document.getElementById('message-me');
+        const cancelBtn = document.getElementById('cancel-btn');
+        const contactForm = document.getElementById('contact-form');
+
+
+        messageBtn.addEventListener('click', () => {
+            dialog.showModal();
+        });
+
+        cancelBtn.addEventListener('click', () => {
+            dialog.close();
+        })
+
+
+        window.addEventListener("load", () => {
+            function sendData() {
+                const XHR = new XMLHttpRequest();
+
+                // Bind the FormData object and the form element
+                const FD = new FormData(form);
+
+                // Define what happens on successful data submission
+                XHR.addEventListener("load", (event) => {
+                    //alert("Message sent!");
+                    dialog2.showModal();
+                    dialog.close();
+                });
+
+                // Define what happens in case of error
+                XHR.addEventListener("error", (event) => {
+                    alert('Oops! Something went wrong.');
+                });
+
+                // Set up post request
+                XHR.open("POST", "https://script.google.com/macros/s/AKfycbx5HzV0elEFbqYNTtpej9J4rOGEx6xPoAzdNdTu0_tFnSmPeK6q8CLukERJ_ajzlzIdZQ/exec");
+
+                // The data sent is what the user provided in the form
+                XHR.send(FD);
+            }
+
+            // Get the form element
+            const form = document.getElementById("contact-form");
+
+            // Add 'submit' event handler
+            form.addEventListener("submit", (event) => {
+                event.preventDefault();
+                sendData();
+            });
+        });
+
+
+    </script>
+</body>
+
+</html>

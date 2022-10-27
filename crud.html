@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script type="module">
+        import * as Blog from './blog.js';
+        import examplePosts from './examples.js';
+        const postButton = document.getElementById('add-post');
+        const cancelBtn = document.getElementById('cancel-btn');
+        const cancelBtn2 = document.getElementById('cancel-btn-2');
+        const dialog = document.getElementById('dialog');
+        const dialog2 = document.getElementById('dialog-2');
+        const confirmBtn = document.getElementById('confirm-btn');
+
+        // event handle when post button clicked
+        postButton.addEventListener('click', ()=>{
+            dialog.showModal();
+        });
+
+        // close custom dialog when cancel button clicked
+        cancelBtn.addEventListener('click', ()=>{
+            dialog.close();
+        });
+
+        // close custom dialog when cancel button clicked
+        cancelBtn2.addEventListener('click', ()=>{
+            dialog2.close();
+        });
+
+        // insert example posts
+        if (Blog.countPosts() == 0) {
+            for (const post of examplePosts) {
+                Blog.insertPost(post);
+            }
+        }
+
+
+        document.addEventListener("DOMContentLoaded", (_ev)=>{
+            const postContainer = document.getElementById("post-list");
+            Blog.redisplayAllPosts(postContainer);
+
+            const addPostForm = document.getElementById("insert-post-form");
+            const editPostForm = document.getElementById("edit-post-form");
+
+            // insert post form event handling
+            addPostForm.addEventListener("submit", (ev)=>{
+                const formData = new FormData(ev.target);
+                const post = {};    // an empty post object to hold value
+                for (const [key, value] of formData.entries()){
+                    post[key] = value;
+                }
+
+                Blog.insertPost(post);
+                Blog.redisplayAllPosts(postContainer);
+            });
+
+            // edit post form event handling
+            editPostForm.addEventListener("submit", (ev)=>{
+                const formData = new FormData(ev.target);
+                const post = {};    // an empty post object to hold value
+                for (const [key, value] of formData.entries()){
+                    post[key] = value;
+                }
+                const postId = document.getElementById("input-postId").value;
+                Blog.updatePost(postId, post);
+                Blog.redisplayAllPosts(postContainer);
+            });
+
+        });
+
+
+
+
+    </script>
+
+
+    <template id="post-template">
+        <post>
+            <h1>Title</h1>
+            <h2>Post Date</h2>
+            <p>Blog summary</p>
+            <button class="edit">edit</button>
+            <button class="delete">delete</button>
+        </post>
+    </template>
+
+</head>
+
+<body>
+    <button id="add-post" style="width:200px; height: 50px;">Post</button>
+    <hr>
+    <section id="post-list" style="display: grid; grid-template-columns: 200px 200px 200px;"></section>
+    
+
+
+        <dialog id="dialog">
+        <form id="insert-post-form" method="dialog">
+            <fieldset style="display: flex; flex-direction:column;">
+                <legend>Add a Post</legend>
+                <label for="title">Title</label>
+                <input type="text" name="title">
+                <label for="date">Date</label>
+                <input type="date" name="date">
+                <label for="summary">Summary</label>
+                <textarea type="text" name="summary"> </textarea>
+
+                <menu>
+                    <button type="button" id="cancel-btn" value="cancel">Cancel</button>
+                    <input type="submit" value="submit">
+                </menu>
+
+            </fieldset>
+
+        </form>
+    </dialog>
+
+    <!-- Dialog for editing post -->
+    <dialog id="dialog-2">
+        <input type="text" id="input-postId" style="display: none;">
+        <form id="edit-post-form" method="dialog">
+            <fieldset style="display: flex; flex-direction:column;">
+                <legend>Edit the Post</legend>
+                <label for="title">Title</label>
+                <input type="text" id="input-title" name="title">
+                <label for="date" >Date</label>
+                <input type="date" id="input-date" name="date">
+                <label for="summary">Summary</label>
+                <textarea type="text" name="summary" id="input-summary"> </textarea>
+
+                <menu>
+                    <button type="button" id="cancel-btn-2" value="cancel">Cancel</button>
+                    <input type="submit" value="submit">
+                </menu>
+
+            </fieldset>
+
+        </form>
+    </dialog>
+
+
+</body>
+
+</html>

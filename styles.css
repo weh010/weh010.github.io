@@ -1,0 +1,521 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --bg-color1: rgb(111, 156, 234);
+    --bg-color2: #CCCCCC;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+@keyframes typing {
+    from {
+        max-width: 0;
+    }
+
+    to {
+        max-width: 100%;
+    }
+}
+
+@keyframes blink {
+
+    from,
+    to {
+        border-color: transparent
+    }
+
+    50% {
+        border-color: white
+    }
+}
+
+.nav {
+    background-color: var(--bg-color1);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    font-family: 'Arial', Helvetica, sans-serif;
+    z-index: 99;
+}
+
+.nav .max_width {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 50px;
+    padding-left: 1em;
+
+}
+
+.menu {
+    margin: 0;
+    padding: 0;
+}
+
+.menu>li {
+    margin: 0 1rem;
+    overflow: hidden;
+    list-style: none;
+    display: block;
+    float: left;
+
+}
+
+.menu li a:hover {
+    background-color: rgb(63, 143, 255);
+}
+
+.menu li a {
+    border-radius: 25px;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 1em;
+    scroll-behavior: smooth;
+    text-decoration: none;
+    transition: .5s;
+}
+
+/* Implementing fold menu */
+.menu-container {
+    display: none;
+    height: 100%;
+    width: 30px;
+    cursor: pointer;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* hide the checkbox */
+#fold-menu {
+    display: none;
+}
+
+.menu-button,
+.menu-button::before,
+.menu-button::after {
+    display: block;
+    background-color: #fff;
+    position: absolute;
+    height: 4px;
+    width: 30px;
+    transition: transform 400ms cubic-bezier(0.22, 1, 0.33, 1);
+    border-radius: 2px;
+}
+
+.menu-button::before {
+    content: "";
+    margin-top: -8px;
+}
+
+.menu-button::after {
+    content: "";
+    margin-top: 8px;
+}
+
+#fold-menu:checked+.menu-container .menu-button::before {
+    margin-top: 0px;
+    transform: rotate(405deg);
+}
+
+#fold-menu:checked+.menu-container .menu-button {
+    background: rgba(255, 255, 255, 0);
+}
+
+#fold-menu:checked+.menu-container .menu-button::after {
+    margin-top: 0px;
+    transform: rotate(-405deg);
+}
+
+.max_width {
+    max-width: 1300px;
+    padding: 0 80px;
+    margin: auto;
+}
+
+section {
+    width: 100%;
+    padding: 100px 0;
+}
+
+.home {
+    background-image: url("/images/desktop/bg-desktop.webp");
+    min-height: 500px;
+}
+
+.home header {
+    padding-top: 150px;
+    padding-bottom: 150px;
+    text-align: center;
+    font-size: 30px;
+
+    color: white;
+}
+
+/* animation greeting */
+.home h1 {
+    font-family: 'Noto Sans', sans-serif;
+    display: inline-block;
+    overflow: hidden;
+    border-right: 5px solid rgb(196, 191, 191);
+    white-space: nowrap;
+    margin: 0 auto;
+    /* letter-spacing: .15em; */
+    animation:
+        typing 3s steps(30, end),
+        blink .75s step-end infinite;
+}
+
+
+.about {
+    display: flex;
+    min-height: 500px;
+}
+
+.about_content,
+.project_list {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.about h1,
+.projects h1,
+.skills h1,
+.contact h1 {
+    font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+    text-align: center;
+    font-size: 45px;
+    position: relative;
+    padding-bottom: 20px;
+}
+
+/* User image in the left */
+.about_content img {
+    margin: auto;
+    display: block;
+    object-fit: cover;
+    border-radius: 50%;
+    width: 400px;
+    height: 400px;
+}
+
+/* User bio in the right */
+.about_content p {
+    font-family: 'DejaVu Sans Mono', monospace;
+    width: 50%;
+    font-size: 30px;
+}
+
+.projects {
+    display: flex;
+    min-height: 500px;
+    background-color: black;
+    color: white;
+}
+
+.project_list {
+    font-size: 30px;
+    font-family: 'FreeMono', monospace;
+}
+
+.project_list ol li {
+    margin: 10px 0;
+}
+
+#cogs {
+    width: 100%;
+    height: 100%;
+}
+
+#eds {
+    width: 100%;
+    height: 100%;
+}
+
+.skill_content {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.progress-bar progress {
+    width: 100%;
+    height: 50px;
+}
+
+.language {
+    position: relative;
+}
+
+
+.Python::after {
+    content: "75%";
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.Java::after {
+    content: "85%";
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.Cpp::after {
+    content: "65%";
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.Git::after {
+    content: "80%";
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.Sql::after {
+    content: "90%";
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.contact {
+    display: flex;
+    min-height: 500px;
+    background-color: var(--bg-color2);
+    color: black;
+}
+
+.contact_content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+p.language {
+    font-family: 'FreeMono', monospace;
+}
+
+img.contact_icon {
+    width: 50px;
+    height: 50px;
+}
+
+footer {
+    font-family: Arial, sans-serif;
+    display: block;
+    background: black;
+    color: white;
+    text-align: center;
+}
+
+dialog {
+    margin: auto;
+    padding: auto;
+}
+
+fieldset.dialog {
+    display: flex;
+    flex-direction: column;
+
+}
+
+fieldset.dialog textarea {
+
+    width: 20em;
+    height: 10em;
+}
+
+#dialog-2>form {
+    font-size: larger;
+    width: 10em;
+    text-align: center;
+}
+
+#dialog-2>form>button {
+    font-size: larger;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    background: transparent;
+    border-radius: 0.5em;
+}
+#dialog-2>form>button:hover{
+    background: #CCCCCC;
+}
+
+
+
+/* contact form send message button*/
+
+button#message-me {
+    font-size: larger;
+    display: block;
+    margin-top: 1em;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 1em;
+    background: rgba(255, 255, 255, 0.473);
+    border-radius: 1em;
+}
+
+button#message-me:hover {
+    background-color: rgb(246, 240, 240);
+}
+
+
+
+/* Media queries */
+
+/* mobile device width < 600px */
+@media only screen and (max-width: 600px) {
+
+    .home {
+        background-image: url("/images/mobile/bg-mobile.webp");
+    }
+
+    .menu-container {
+        display: flex;
+        height: 2em;
+    }
+
+    .menu {
+        width: 100%;
+        top: 0;
+        left: 0;
+        position: absolute;
+        margin-top: 50px;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #fold-menu~.menu li {
+        border: 0;
+        padding: 0;
+        height: 0;
+        margin: 0;
+        transition: height 400ms cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    #fold-menu:checked~.menu li {
+        border: 1px solid #333;
+        height: 2.5em;
+        padding: 0.5em;
+        transition: height 400ms cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    .menu>li {
+        display: flex;
+        justify-content: center;
+        margin: 0;
+        padding: 0.5em 0;
+        width: 100%;
+        color: white;
+        background-color: #222;
+    }
+
+    .menu>li:not(:last-child) {
+        border-bottom: 1px solid #444;
+    }
+
+    .home h1 {
+        font-size: 13px;
+    }
+
+    .about h1,
+    .projects h1,
+    .skills h1,
+    .contact h1 {
+        font-size: 1.5em;
+    }
+
+    .about_content {
+        flex-direction: column;
+    }
+
+    .about_content p {
+        padding-top: 2em;
+        font-size: 1.2em;
+        width: 130%;
+    }
+
+    .project_list {
+        font-size: 1em;
+    }
+
+    .project_list ol li {
+        width: 110%;
+    }
+
+    img.contact_icon {
+        /* margin-left: 1em; */
+        margin-right: 1em;
+    }
+
+    .about img {
+        width: 50%;
+        height: 50%;
+    }
+}
+
+/* tablet device width < 1100px */
+@media only screen and (min-width:600.1px) and (max-width: 1100px) {
+
+    .home {
+        background-image: url("/images/tablet/bg-tablet.webp");
+    }
+
+    .home h1 {
+        font-size: 30px;
+    }
+
+    .about h1,
+    .projects h1,
+    .skills h1,
+    .contact h1 {
+        font-size: 4em;
+    }
+
+    .about_content {
+        flex-direction: column;
+    }
+
+    .about_content p {
+        padding-top: 2em;
+        font-size: 2.5em;
+        width: 100%;
+    }
+
+    .project_list {
+        font-size: 1em;
+    }
+
+    /* .project_list ol li {
+        width: 100%;
+    } */
+
+    img.contact_icon {
+        /* margin-left: 1em; */
+        margin-right: 1em;
+    }
+
+    .about img {
+        width: 50%;
+        height: 50%;
+    }
+}

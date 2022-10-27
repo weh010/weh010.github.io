@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #result {
+            margin: 0;
+            display: none;
+            border-style: double;
+            padding: 0.5em;
+            width: 20%;
+            text-align: center;
+            border-width: thick;
+        }
+    </style>
+    <!-- <script src="customdialog.js"></script> -->
+    <script src="https://unpkg.com/dompurify@1.0.8/dist/purify.min.js"></script>
+</head>
+
+<body>
+    <h1>Simple Dialog</h1>
+
+    <button type="button" id="btn1">Alert</button>
+    <button type="button" id="btn2">Confirm</button>
+    <button type="button" id="btn3">Prompt</button>
+    <hr>
+
+    <p id="result"></p>
+
+
+    <template id="dialog-wrapper">
+        <dialog id="dialog-id">
+            <form method="dialog">
+                <p class="alert" style="display: none;">Alert pressed!</p>
+                <p class="confirm" style="display: none;">Do you confirm this?</p>
+                <p class="prompt" style="display: none;">What is your name?</p>
+                <input type="text" id="name" style="display: none;">
+                <menu>
+                    <button id="positive" value="default">Ok</button>
+                    <button id="negative" style="display: none;" value="cancel">Cancel</button>
+                </menu>
+            </form>
+        </dialog>
+    </template>
+
+
+
+    <script type="module">
+        import * as myDialog from './customdialog.js';
+
+
+        // action for alert button
+        document.getElementById("btn1").addEventListener("click", function () {
+            result.style.display = 'none';
+            setTimeout(function () {
+                myDialog.dialogAlert();
+            }, 10);
+        });
+
+        // action for confirm button
+        document.getElementById("btn2").addEventListener("click", function () {
+            result.style.display = 'none';
+
+            setTimeout(async function () {
+                let text;
+                let confirmed = await myDialog.dialogConfirm();
+                console.log(confirmed);
+                text = "Confirm result: " + confirmed;
+                document.getElementById("result").innerHTML = text;
+                result.style.display = 'block';
+            }, 10);
+        });
+
+        // action for prompt button
+        document.getElementById("btn3").addEventListener("click", function () {
+            result.style.display = 'none';
+
+            setTimeout(async function () {
+                let text = "Prompt result: ";
+                let prompt = await myDialog.dialogPrompt();
+                console.log(prompt);
+                if (prompt == null || prompt == "") {
+                    prompt = "User didn't enter anything";
+                }
+                
+                document.getElementById("result").innerHTML = text + prompt;
+                result.style.display = 'block';
+            }, 10);
+        });
+
+    </script>
+
+</body>
+
+</html>
